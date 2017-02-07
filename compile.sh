@@ -1,3 +1,5 @@
+#/bin/bash
+
 SRC_PATH=./src/
 OUT_PATH=./bin/
 FILE_COUNT=0
@@ -16,6 +18,6 @@ while read f;
     g++ $f -o $F_BIN
     FILE_COUNT=$((FILE_COUNT + 1))
   done < .files
-  
+
 rm .files
 echo "Compiled $FILE_COUNT files."
