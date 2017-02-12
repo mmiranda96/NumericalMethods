@@ -5,8 +5,11 @@ Repository for the class of numerical methods. This repository includes common n
 
 Also, each method has a link to a post explaining the method, what is it for, how it works and every other specification.
 
-In order to compile, just run compile.sh
+In order to compile, just run compile.sh. All bin files will be located on bin/.
 
 ---
 
 ## Methods written
+* Root finding
+  * Bisection
+  * Newton-Raphson
