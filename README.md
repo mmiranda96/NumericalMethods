@@ -17,3 +17,4 @@ In order to compile, just run compile.sh. All bin files will be located on bin/.
   * Bairstow (C++)
 * Linear equation system solving
   * Cramer (Scilab)
+  * Gauss (Scilab)
