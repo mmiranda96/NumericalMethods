@@ -37,17 +37,21 @@ void syn_div(vector<double> &pol, vector<double> &res, vector<double> &aux, doub
   }
 }
 
-void cramer(double a1, double b1, double c1, double a2, double b2, double c2, double &x, double &y) {
-  double d = (a1 * b2) - (a2 * b1);
-  x = (c1 * b2 - c2 * b1) / d;
-  y = (a1 * c2 - a2 * c1) / d;
+void quadratic(double a, double b, double c, complex *r1, complex *r2) {
+  double det = pow(b, 2) - 4 * a * c;
+  if (det < 0) {
+    r1->r = -b / 2;
+    r1->i = sqrt(-det) / 2 / a;
+    r2->r = -b / 2;
+    r2->i = -sqrt(-det) / 2 / a;
+  }
+  else {
+    r1->r = (-b + sqrt(det)) / 2 / a;
+    r1->i = 0;
+    r2->r = (-b - sqrt(det)) / 2 / a;
+    r2->i = 0;
+  }
 }
-
-/*
-double quadratic(double a, double b, double c, bool sign) {
-  return sign ? (-b + sqrt(pow(b, 2) - 4 * a * c)) / (2 * a) : (-b - sqrt(pow(b, 2) - 4 * a * c)) / (2 * a);
-}
-*/
 
 void bairstow(vector<double> &pol, vector<complex*> &roots, double pi, double qi, double err) {
   while (pol.size() > 3) {
@@ -92,18 +96,7 @@ void bairstow(vector<double> &pol, vector<complex*> &roots, double pi, double qi
 
     complex *r1 = new complex;
     complex *r2 = new complex;
-    if (det < 0) {
-      r1->r = p / 2;
-      r1->i = sqrt(-det) / 2;
-      r2->r = p / 2;
-      r2->i = -sqrt(-det) / 2;
-    }
-    else {
-      r1->r = (p + sqrt(det)) / 2;
-      r1->i = 0;
-      r2->r = (p - sqrt(det)) / 2;
-      r2->i = 0;
-    }
+    quadratic(1.0, -p, -q, r1, r2);
     roots.push_back(r1);
     roots.push_back(r2);
 
@@ -127,24 +120,9 @@ void bairstow(vector<double> &pol, vector<complex*> &roots, double pi, double qi
   }
 
   if (pol.size() == 3) {
-    int p = -pol[1];
-    int q = -pol[2];
-    double det = pow(p, 2) + 4 * q;
-
     complex *r1 = new complex;
     complex *r2 = new complex;
-    if (det < 0) {
-      r1->r = p / 2;
-      r1->i = sqrt(-det) / 2;
-      r2->r = p / 2;
-      r2->i = -sqrt(-det) / 2;
-    }
-    else {
-      r1->r = (p + sqrt(det)) / 2;
-      r1->i = 0;
-      r2->r = (p - sqrt(det)) / 2;
-      r2->i = 0;
-    }
+    quadratic(pol[0], pol[1], pol[2], r1, r2);
     roots.push_back(r1);
     roots.push_back(r2);
   }
@@ -157,8 +135,7 @@ void bairstow(vector<double> &pol, vector<complex*> &roots, double pi, double qi
 }
 
 int main(int argc, char* argv[]) {
-  //vector<double> pol = {1.0, -4.0, -11.0, 30};
-  vector<double> pol = {6.7, -4, 0, 3.2, -3, 8, 1.2, 2, 0, 1, -4};
+  vector<double> pol = {1, -3, 2.2, 1.22, -0.02, 189};
   vector<complex*> roots;
   double p = -1;
   double q = -1;
