@@ -18,6 +18,7 @@ In order to compile, just run compile.sh. All bin files will be located on bin/.
 * Linear equation system solving
   * Cramer (Scilab)
   * Gauss (Scilab)
+  * Gauss-Jordan (Scilab)
 * Regression
   * Least squares (C++)
   * Exponential & potential linearization (C++)
