@@ -21,3 +21,9 @@ In order to compile, just run compile.sh. All bin files will be located on bin/.
 * Regression
   * Least squares (C++)
   * Exponential & potential linearization (C++)
+* Interpolation
+  * Linear (C++)
+  * Quadratic (C++)
+  * Newton (C++)
+  * Lagrange (C++)
+* Numeric integration
