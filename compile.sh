@@ -4,6 +4,7 @@ SRC_PATH=./src/
 OUT_PATH=./bin/
 FILE_COUNT=0
 
+mkdir ${OUT_PATH} &> /dev/null
 touch .files
 find $SRC_PATH -name *.cpp > .files
 
