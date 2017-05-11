@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -12,6 +13,6 @@ int main(int argc, char *argv[]) {
     cerr << "This method takes two points and an x value for calculating its y." << endl;
     return 0;
   }
-  cout << "Value: " << interpolation(0, 72.5, 0.5, 78.1, 0.3) << endl;
+  cout << "Value: " << interpolation(atof(argv[1]), atof(argv[2]), atof(argv[3]), atof(argv[4]), atof(argv[5])) << endl;
   return 0;
 }
