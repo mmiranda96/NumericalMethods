@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -135,7 +136,15 @@ void bairstow(vector<double> &pol, vector<complex*> &roots, double pi, double qi
 }
 
 int main(int argc, char* argv[]) {
-  vector<double> pol = {1, -3, 2.2, 1.22, -0.02, 189};
+  if (argc < 3) {
+    cerr << "This method receives a polynomial of minimum grade = 2, expressed from more significant coefficient to less significant." << endl;
+    return -1;
+  }
+  vector<double> pol(argc - 1, 0);
+  cout << pol.size() << endl;
+  for (int i = 1; i < argc; i++) {
+    pol[i - 1] = atof(argv[i]);
+  }
   vector<complex*> roots;
   double p = -1;
   double q = -1;

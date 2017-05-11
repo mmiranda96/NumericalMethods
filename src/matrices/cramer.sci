@@ -10,7 +10,6 @@ function [R] = cramer(A, B)
     end
 endfunction
 
-A = [3., -0.1, -0.2; 0.1, 7., -0.3; 0.3, -0.2, 10.]
-B = [7.85; -19.3; 71.4]
-
-R = cramer(A, B)
+A = [1., 2.; 1., -2.]
+B = [9.; 1.]
+S = cramer(A, B)

@@ -5,7 +5,7 @@
 using namespace std;
 
 double f(double x) {
-  double fx = log(abs(x)); //Something
+  double fx = pow(x, 3) + 10 * x + 5; //Something
   if (isnan(fx)) {
     cerr << "Function is discontinuous on " << x << endl;
   }
